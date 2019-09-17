@@ -1,0 +1,129 @@
+<div class="p-non-exfoliate-outer-padding">
+
+  <h1 class="p-title">
+        {{fa-icon "file" fixedWidth=true}} Summary
+  </h1>
+
+  <div>
+     <span class="p-value">{{details.summary}}</span>
+ </div>
+
+    {{#if details.reputation}}
+    <h1 class="p-title">
+          {{fa-icon "star" fixedWidth=true}} Reputation Information
+    </h1>
+
+    <div>
+       <span class="p-key">Reputation: </span>
+       <span class="p-value">{{details.reputation}}</span>
+   </div>
+
+    {{/if}}
+    {{#if details.details.malicous_activity}}
+    <div>
+       <span class="p-key">Malicous Activity: </span>
+       <span class="p-value">{{details.details.malicous_activity}}</span>
+   </div>
+   {{else}}
+   <div>
+      <span class="p-key">Malicous Activity: </span>
+      <span class="p-value">False</span>
+  </div>
+  {{/if}}
+
+  <h1 class="p-title">
+        {{fa-icon "angry" fixedWidth=true}} Breach Information
+  </h1>
+
+    <div>
+       <span class="p-key">Data Beach: </span>
+       <span class="p-value">{{details.details.data_breach}}</span>
+   </div>
+   <div>
+      <span class="p-key">Credentials Leaked: </span>
+      <span class="p-value">{{details.details.credentials_leaked}}</span>
+  </div>
+  <div>
+     <span class="p-key">Credentials Leaked Recently: </span>
+     <span class="p-value">{{details.details.credentials_leaked_recent}}</span>
+ </div>
+
+ <h1 class="p-title">
+       {{fa-icon "envelope-square" fixedWidth=true}} Email History
+ </h1>
+
+ <div>
+    <span class="p-key">First Seen: </span>
+    <span class="p-value">{{details.details.first_seen}}</span>
+</div>
+<div>
+   <span class="p-key">Last Seen: </span>
+   <span class="p-value">{{details.details.last_seen}}</span>
+</div>
+
+<h1 class="p-title">
+      {{fa-icon "mail-bulk" fixedWidth=true}} Spam? {{details.details.spam}}
+</h1>
+
+<h1 class="p-title">
+      {{fa-icon "browser" fixedWidth=true}} Domain History
+</h1>
+
+<div>
+   <span class="p-key">Domain Exisists: </span>
+   <span class="p-value">{{details.details.domain_exists}}</span>
+</div>
+<div>
+   <span class="p-key">Domain Reputation: </span>
+   <span class="p-value">{{details.details.domain_reputation}}</span>
+</div>
+<div>
+   <span class="p-key">New Domain: </span>
+   <span class="p-value">{{details.details.new_domain}}</span>
+</div>
+<div>
+   <span class="p-key">Days Since Domain Creation: </span>
+   <span class="p-value">{{details.details.days_since_domain_creation}}</span>
+</div>
+
+<div>
+   <span class="p-key">Suspicious TLD: </span>
+   <span class="p-value">{{details.details.suspicious_tld}}</span>
+</div>
+
+
+<h1 class="p-title">
+      {{fa-icon "info" fixedWidth=true}} Additional Information
+</h1>
+
+<div>
+   <span class="p-key">Free Provider: </span>
+   <span class="p-value">{{details.details.free_provider}}</span>
+</div>
+
+<div>
+   <span class="p-key">Disposable: </span>
+   <span class="p-value">{{details.details.disposable}}</span>
+</div>
+
+<div>
+   <span class="p-key">Spoofable: </span>
+   <span class="p-value">{{details.details.spoofable}}</span>
+</div>
+<div>
+   <span class="p-key">SPF Strict: </span>
+   <span class="p-value">{{details.details.spf_strict}}</span>
+</div>
+<div>
+   <span class="p-key">DMARC Enforced: </span>
+   <span class="p-value">{{details.details.dmarc_enforced}}</span>
+</div>
+
+<h1 class="p-title">
+      Associated Social Profiles
+</h1>
+
+{{#each details.details.profiles as |profile|}}
+  <li>{{profile}}</li>
+{{/each}}
+</div>

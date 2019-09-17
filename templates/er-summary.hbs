@@ -1,0 +1,35 @@
+{{#if details.reputation}}
+
+    <span class="integration-summary-tag integration-background-color integration-border-color">
+       <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+       <span class="integration-text-color">Reputation: {{details.reputation}}</span>
+    </span>
+  {{/if}}
+  {{#if details.details.malicous_activity}}
+    <span class="integration-summary-tag integration-background-color integration-border-color">
+       <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+       <span class="integration-text-color">Malicous Activity : {{details.details.malicous_activity}}</span>
+    </span>
+  {{else}}
+  <span class="integration-summary-tag integration-background-color integration-border-color">
+     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+     <span class="integration-text-color">Malicous Activity: False</span>
+  </span>
+  {{/if}}
+  {{#if details.suspicious}}
+  <span class="integration-summary-tag integration-background-color integration-border-color">
+     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+     <span class="integration-text-color">Suspicious: {{details.suspicious}} </span>
+  </span>
+  {{else}}
+  <span class="integration-summary-tag integration-background-color integration-border-color">
+     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+     <span class="integration-text-color">Suspicious: False</span>
+  </span>
+  {{/if}}
+  {{#if details.details.last_seen}}
+  <span class="integration-summary-tag integration-background-color integration-border-color">
+     <span class="acronym integration-text-bold-color">{{block.acronym}}</span>
+     <span class="integration-text-color">Last Seen: {{details.details.last_seen}}</span>
+  </span>
+  {{/if}}
