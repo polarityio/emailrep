@@ -8,12 +8,12 @@ Here is a screenshot of the integration:
 
 To learn more about EmailRep, please visit: [official website](https://emailrep.io)
 
+To obtain an API Key from emailrep.io, please email hi@sublimesecurity.com.
+
 ## EmailRep Integration Options
 
 ### EmailRep ApiKey
 ApiKey needed to access the EmailRep Api.
-
-> Please note that emailrep.io allows for free 50 queries a day which an api key is not needed. To disable the API key please comment out line 34 in the integration file.
 
 ## Installation Instructions
 
