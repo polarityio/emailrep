@@ -154,7 +154,7 @@ function validateOptions(userOptions, cb) {
   ) {
     errors.push({
       key: "apiKey",
-      message: "You must provide a valid Google Translate API key"
+      message: "You must provide a valid API key"
     });
   }
   cb(null, errors);
