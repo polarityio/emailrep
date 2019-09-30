@@ -15,6 +15,12 @@ To obtain an API Key from emailrep.io, please email hi@sublimesecurity.com.
 ### EmailRep ApiKey
 ApiKey needed to access the EmailRep Api.
 
+### EmailRep Blacklist
+List of email domains you do not want sent to Emailrep.
+
+### EmailRep Blacklist Regex
+Blacklist regex for domains that you do not want sent to Emailrep.
+
 ## Installation Instructions
 
 Installation instructions for integrations are provided on the [PolarityIO GitHub Page](https://polarityio.github.io/).
