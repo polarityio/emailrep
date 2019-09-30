@@ -16,15 +16,40 @@ let requestDefault;
  * @param options
  * @param cb
  */
+
+
+let domainBlacklistRegex = null;
+let previousDomainRegexAsString = '';
+
+ function _setupRegexBlacklists(options) {
+  if (options.domainBlacklistRegex !== previousDomainRegexAsString && options.domainBlacklistRegex.length === 0) {
+    Logger.debug('Removing Domain Blacklist Regex Filtering');
+    previousDomainRegexAsString = '';
+    domainBlacklistRegex = null;
+  } else {
+    if (options.domainBlacklistRegex !== previousDomainRegexAsString) {
+      previousDomainRegexAsString = options.domainBlacklistRegex;
+      Logger.debug({ domainBlacklistRegex: previousDomainRegexAsString }, 'Modifying Domain Blacklist Regex');
+      domainBlacklistRegex = new RegExp(options.domainBlacklistRegex, 'i');
+    }
+  }
+}
+
 function doLookup(entities, options, cb) {
     let lookupResults = [];
     let tasks = [];
 
     Logger.trace({entities: entities}, 'entities');
 
+    _setupRegexBlacklists(options);
+
+
     entities.forEach(entity => {
 
-      if (entity.value) {
+      if (_isEntityBlacklisted(entity, options)) {
+          next(null);
+        } else (entity.value)
+        {
         //do the lookup
         let requestOptions = {
           method: "GET",
@@ -104,6 +129,26 @@ function doLookup(entities, options, cb) {
 
         cb(null, lookupResults);
     });
+}
+
+function _isEntityBlacklisted(entity, options) {
+  const blacklist = options.blacklist;
+
+  Logger.trace({ blacklist: blacklist }, 'checking to see what blacklist looks like');
+
+  if (_.includes(blacklist, entity.value.toLowerCase())) {
+    return true;
+  }
+
+  if (entity.isDomain) {
+    if (domainBlacklistRegex !== null) {
+      if (domainBlacklistRegex.test(entity.value)) {
+        Logger.debug({ domain: entity.value }, 'Blocked BlackListed Domain Lookup');
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 function _isMiss(body) {
