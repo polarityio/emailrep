@@ -56,6 +56,7 @@ function doLookup(entities, options, cb) {
           uri: "https://emailrep.io/" + entity.value + "?summary=true",
           headers: {
               'Content-Type': 'application/json',
+              'User-Agent': 'Polarity',
               'Key': options.apiKey
           },
           json: true
