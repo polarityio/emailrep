@@ -78,7 +78,7 @@ module.exports = {
         proxy: ''
     },
     logging: {
-        level: 'info',  //trace, debug, info, warn, error, fatal
+        level: 'trace',  //trace, debug, info, warn, error, fatal
     },
     /**
      * Options er are displayed to the user/admin in the Polarity integration user-interface.  Should be structured
@@ -93,7 +93,7 @@ module.exports = {
             "name": "API Key",
             "description": "Email rep apikey ",
             "default": "",
-            "type": "text",
+            "type": "password",
             "userCanEdit": true,
             "adminOnly": false
         },
