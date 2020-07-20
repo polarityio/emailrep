@@ -98,21 +98,21 @@ module.exports = {
             "adminOnly": false
         },
         {
-            "key": 'blacklist',
-            "name": 'Blacklist Domains',
+            "key": 'blocklist',
+            "name": 'Ignore List',
             "description": 'List of domains that you never want to send to emailrep',
             "default": '',
             "type": 'text',
-            "userCanEdit": false,
+            "userCanEdit": true,
             "adminOnly": false
         },
         {
-          "key": 'domainBlacklistRegex',
-          "name": 'Domain Black List Regex',
-          "description": 'Domains that match the given regex will not be looked up (if blank, no domains will be black listed)',
+          "key": 'domainBlocklistRegex',
+          "name": 'Ignore Domain Regex',
+          "description": 'Domains that match the given regex will not be looked up.',
           "default": '',
           "type": 'text',
-          "userCanEdit": false,
+          "userCanEdit": true,
           "adminOnly": false
         }
     ]

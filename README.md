@@ -15,11 +15,11 @@ To obtain an API Key from emailrep.io, please email hi@sublimesecurity.com.
 ### EmailRep ApiKey
 ApiKey needed to access the EmailRep Api.
 
-### EmailRep Blacklist
+### Ingore List
 List of email domains you do not want sent to Emailrep.
 
-### EmailRep Blacklist Regex
-Blacklist regex for domains that you do not want sent to Emailrep.
+### Ignore Domain Regex
+Regex that matches email domains that should not be sent to Emailrep.
 
 ## Installation Instructions
 
