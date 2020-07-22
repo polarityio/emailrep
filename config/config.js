@@ -103,7 +103,7 @@ module.exports = {
             "description": 'List of domains that you never want to send to emailrep',
             "default": '',
             "type": 'text',
-            "userCanEdit": true,
+            "userCanEdit": false,
             "adminOnly": false
         },
         {
@@ -112,7 +112,7 @@ module.exports = {
           "description": 'Domains that match the given regex will not be looked up.',
           "default": '',
           "type": 'text',
-          "userCanEdit": true,
+          "userCanEdit": false,
           "adminOnly": false
         }
     ]
