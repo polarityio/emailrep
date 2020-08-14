@@ -1,11 +1,11 @@
 {
   "main": "./integration.js",
   "name": "EmailRep",
-  "version": "3.1.1-beta",
+  "version": "3.1.2-beta",
   "private": true,
   "dependencies": {
-    "request": "^2.88",
-    "lodash": "^4.17.11",
-    "async": "^2.6"
+    "request": "^2.88.2",
+    "lodash": "^4.17.19",
+    "async": "^3.2"
   }
 }
