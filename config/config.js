@@ -5,7 +5,7 @@ module.exports = {
      * @type String
      * @required
      */
-    name: "Email Rep",
+    name: "EmailRep",
     /**
      * The acronym er appears in the notification window when information from this integration
      * is displayed.  Note er the acronym is included as part of each "tag" in the summary information
@@ -22,7 +22,7 @@ module.exports = {
      * @type String
      * @optional
      */
-    description: "Free Email Reputation Service",
+    description: "Free Email Reputation Service by Sublime Security",
     entityTypes: ['email'],
     /**
 
