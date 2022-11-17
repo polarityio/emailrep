@@ -92,7 +92,7 @@ module.exports = {
     {
       key: 'blocklist',
       name: 'Ignore List',
-      description: 'List of domains that you never want to send to emailrep',
+      description: 'Comma delimited list of emails that you never want to send to emailrep.  To block by domain, use the "Ignore Domain Regex" option.',
       default: '',
       type: 'text',
       userCanEdit: false,
@@ -101,7 +101,7 @@ module.exports = {
     {
       key: 'domainBlocklistRegex',
       name: 'Ignore Domain Regex',
-      description: 'Domains that match the given regex will not be looked up.',
+      description: 'Emails with a domain that match the given regex will not be looked up.',
       default: '',
       type: 'text',
       userCanEdit: false,

@@ -181,20 +181,25 @@ function getSummaryTags(result) {
 function _isEntityBlocklisted(entity, options) {
   const blocklist = options.blocklist;
 
-  Logger.trace({ blocklist: blocklist }, 'checking to see what blocklist looks like');
+  Logger.trace({ blocklist }, 'checking to see what blocklist looks like');
 
   if (_.includes(blocklist, entity.value.toLowerCase())) {
     return true;
   }
 
-  if (entity.isDomain) {
-    if (domainBlocklistRegex !== null) {
-      if (domainBlocklistRegex.test(entity.value)) {
-        Logger.debug({ domain: entity.value }, 'Blocked BlockListed Domain Lookup');
-        return true;
-      }
+  const tokens = entity.value.split('@');
+  let domain = null;
+  if (tokens.length === 2) {
+    domain = tokens[1];
+  }
+
+  if (domainBlocklistRegex !== null && domain !== null) {
+    if (domainBlocklistRegex.test(domain)) {
+      Logger.debug({ domain: entity.value }, 'Blocked BlockListed Domain Lookup');
+      return true;
     }
   }
+
   return false;
 }
 
