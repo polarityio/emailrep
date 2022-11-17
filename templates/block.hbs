@@ -127,8 +127,17 @@
     {{/each}}
  {{/if}}
 
- <div class="p-footnote mt-2">
-   Monthly Lookups Remaining: {{details.monthlyLookupsRemaining}}
+ <div class="mt-2">
+   {{#if details.dailyLookupsRemaining}}
+     <div class="p-footnote">
+       Daily Lookups Remaining: {{details.dailyLookupsRemaining}}
+     </div>
+   {{/if}}
+   {{#if details.monthlyLookupsRemaining}}
+     <div class="p-footnote">
+       Monthly Lookups Remaining: {{details.monthlyLookupsRemaining}}
+     </div>
+   {{/if}}
  </div>
 
  <div class="mt-2 powered-by">

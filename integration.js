@@ -74,21 +74,30 @@ function doLookup(entities, options, cb) {
           }
 
           let result = {};
+
+          const dailyLookupsRemaining =
+            res.headers && res.headers['x-rate-limit-daily-remaining']
+              ? res.headers['x-rate-limit-daily-remaining']
+              : null;
+
+          const monthlyLookupsRemaining =
+            res.headers && res.headers['x-rate-limit-monthly-remaining']
+              ? res.headers['x-rate-limit-monthly-remaining']
+              : null;
+
           if (res.statusCode === 200) {
             result = {
               entity: entity,
               body: body,
-              monthlyLookupsRemaining: res.headers
-                ? res.headers['x-rate-limit-monthly-remaining']
-                : 'N/A'
+              monthlyLookupsRemaining,
+              dailyLookupsRemaining
             };
           } else if (res.statusCode === 429) {
             // reached rate limit
             error = {
               detail: 'Reached API Lookup Limit',
-              monthlyLookupsRemaining: res.headers
-                ? res.headers['x-rate-limit-monthly-remaining']
-                : 'N/A'
+              monthlyLookupsRemaining,
+              dailyLookupsRemaining
             };
           } else {
             // Non 200 status code
@@ -98,9 +107,8 @@ function doLookup(entities, options, cb) {
               body: body,
               detail: 'Unexpected Non 200 HTTP Status Code',
               entity: entity.value,
-              monthlyLookupsRemaining: res.headers
-                ? res.headers['x-rate-limit-monthly-remaining']
-                : 'N/A'
+              monthlyLookupsRemaining,
+              dailyLookupsRemaining
             });
             return;
           }
@@ -130,7 +138,8 @@ function doLookup(entities, options, cb) {
             summary: getSummaryTags(result.body),
             details: {
               ...result.body,
-              monthlyLookupsRemaining: result.monthlyLookupsRemaining
+              monthlyLookupsRemaining: result.monthlyLookupsRemaining,
+              dailyLookupsRemaining: result.dailyLookupsRemaining
             }
           }
         });
