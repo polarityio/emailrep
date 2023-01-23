@@ -1,0 +1,56 @@
+{
+  "name": "EmailRep",
+  "acronym": "ER",
+  "description": "Free Email Reputation Service by Sublime Security",
+  "entityTypes": ["email"],
+  "defaultColor": "light-blue",
+  "styles": ["./styles/styles.less"],
+  "block": {
+    "component": {
+      "file": "./components/block.js"
+    },
+    "template": {
+      "file": "./templates/block.hbs"
+    }
+  },
+  "request": {
+    "cert": "",
+    "key": "",
+    "passphrase": "",
+    "ca": "",
+    "proxy": "",
+    "rejectUnauthorized": true
+  },
+  "logging": {
+    "level": "info"
+  },
+  "options": [
+    {
+      "key": "apiKey",
+      "name": "API Key",
+      "description": "Email rep apikey ",
+      "default": "",
+      "type": "password",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "blocklist",
+      "name": "Ignore List",
+      "description": "Comma delimited list of emails that you never want to send to emailrep.  To block by domain, use the \"Ignore Domain Regex\" option.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    },
+    {
+      "key": "domainBlocklistRegex",
+      "name": "Ignore Domain Regex",
+      "description": "Emails with a domain that match the given regex will not be looked up.",
+      "default": "",
+      "type": "text",
+      "userCanEdit": false,
+      "adminOnly": true
+    }
+  ]
+}
