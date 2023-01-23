@@ -2,12 +2,9 @@
   "name": "EmailRep",
   "acronym": "ER",
   "description": "Free Email Reputation Service by Sublime Security",
-  "entityTypes": [
-    "email"
-  ],
-  "styles": [
-    "./styles/styles.less"
-  ],
+  "entityTypes": ["email"],
+  "defaultColor": "light-blue",
+  "styles": ["./styles/styles.less"],
   "block": {
     "component": {
       "file": "./components/block.js"

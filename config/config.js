@@ -24,15 +24,14 @@ module.exports = {
    */
   description: 'Free Email Reputation Service by Sublime Security',
   entityTypes: ['email'],
+  defaultColor: 'light-blue',
   /**
-
-     /**
-     * An array of style files (css or less) er will be included for your integration. Any styles specified in
-     * the below files can be used in your custom template.
-     *
-     * @type Array
-     * @optional
-     */
+   * An array of style files (css or less) er will be included for your integration. Any styles specified in
+   * the below files can be used in your custom template.
+   *
+   * @type Array
+   * @optional
+   */
   styles: ['./styles/styles.less'],
   /**
    * Provide custom component logic and template for rendering the integration details block.  If you do not
@@ -92,7 +91,8 @@ module.exports = {
     {
       key: 'blocklist',
       name: 'Ignore List',
-      description: 'Comma delimited list of emails that you never want to send to emailrep.  To block by domain, use the "Ignore Domain Regex" option.',
+      description:
+        'Comma delimited list of emails that you never want to send to emailrep.  To block by domain, use the "Ignore Domain Regex" option.',
       default: '',
       type: 'text',
       userCanEdit: false,
