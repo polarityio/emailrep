@@ -1,148 +1,172 @@
- <h1 class="p-title">
-   {{fa-icon icon="file" fixedWidth=true}} Summary
- </h1>
+<div class="d-flex align-items-center justify-content-end copy-btn-container">
+  <button
+    class="btn copy-btn p-action"
+    {{action "copyData"}}
+    title="Copy Detection Data to Clipboard"
+  >
+    {{fa-icon icon="clipboard" fixedWidth=true}}
+  </button>
+  <div class="copy-success-message {{if showCopyMessage 'visible' 'hidden'}}">
+    {{fa-icon icon="check" fixedWidth=true class="copy-success-icon"}}
+    Copied detection data.
+  </div>
+</div>
 
- <div>
+<h1 class="p-title">
+  {{fa-icon icon="file" fixedWidth=true}}
+  Summary
+</h1>
+
+<div id={{concat "email-container-" uniqueIdPrefix}}>
+  <div>
     <span class="p-value summary">{{details.summary}}</span>
- </div>
+  </div>
 
- {{#if details.reputation}}
+  {{#if details.reputation}}
     <h1 class="p-title">
-      {{fa-icon icon="star" fixedWidth=true}} Reputation Information
+      {{fa-icon icon="star" fixedWidth=true}}
+      Reputation Information
     </h1>
 
     <div>
-       <span class="p-key">Reputation: </span>
-       <span class="p-value">{{details.reputation}}</span>
+      <span class="p-key">Reputation: </span>
+      <span class="p-value">{{details.reputation}}</span>
     </div>
- {{/if}}
+  {{/if}}
 
- {{#if details.details.malicous_activity}}
+  {{#if details.details.malicous_activity}}
     <div>
-       <span class="p-key">Malicious Activity: </span>
-       <span class="p-value">{{details.details.malicous_activity}}</span>
+      <span class="p-key">Malicious Activity: </span>
+      <span class="p-value">{{details.details.malicous_activity}}</span>
     </div>
- {{else}}
+  {{else}}
     <div>
-       <span class="p-key">Malicious Activity: </span>
-       <span class="p-value">False</span>
+      <span class="p-key">Malicious Activity: </span>
+      <span class="p-value">False</span>
     </div>
- {{/if}}
+  {{/if}}
 
- <h1 class="p-title">
-    {{fa-icon icon="angry" fixedWidth=true}} Breach Information
- </h1>
+  <h1 class="p-title">
+    {{fa-icon icon="angry" fixedWidth=true}}
+    Breach Information
+  </h1>
 
- <div>
+  <div>
     <span class="p-key">Data Beach: </span>
     <span class="p-value">{{details.details.data_breach}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">Credentials Leaked: </span>
     <span class="p-value">{{details.details.credentials_leaked}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">Credentials Leaked Recently: </span>
     <span class="p-value">{{details.details.credentials_leaked_recent}}</span>
- </div>
+  </div>
 
- <h1 class="p-title">
-       {{fa-icon icon="envelope-square" fixedWidth=true}} Email History
- </h1>
+  <h1 class="p-title">
+    {{fa-icon icon="envelope-square" fixedWidth=true}}
+    Email History
+  </h1>
 
- <div>
+  <div>
     <span class="p-key">First Seen: </span>
     <span class="p-value">{{details.details.first_seen}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">Last Seen: </span>
     <span class="p-value">{{details.details.last_seen}}</span>
- </div>
+  </div>
 
- <h1 class="p-title">
-       {{fa-icon icon="mail-bulk" fixedWidth=true}} Spam? {{details.details.spam}}
- </h1>
+  <h1 class="p-title">
+    {{fa-icon icon="mail-bulk" fixedWidth=true}}
+    Spam?
+    {{details.details.spam}}
+  </h1>
 
- <h1 class="p-title">
-       {{fa-icon icon="browser" fixedWidth=true}} Domain History
- </h1>
+  <h1 class="p-title">
+    {{fa-icon icon="browser" fixedWidth=true}}
+    Domain History
+  </h1>
 
- <div>
+  <div>
     <span class="p-key">Domain Exisists: </span>
     <span class="p-value">{{details.details.domain_exists}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">Domain Reputation: </span>
     <span class="p-value">{{details.details.domain_reputation}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">New Domain: </span>
     <span class="p-value">{{details.details.new_domain}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">Days Since Domain Creation: </span>
     <span class="p-value">{{details.details.days_since_domain_creation}}</span>
- </div>
+  </div>
 
- <div>
+  <div>
     <span class="p-key">Suspicious TLD: </span>
     <span class="p-value">{{details.details.suspicious_tld}}</span>
- </div>
+  </div>
 
+  <h1 class="p-title">
+    {{fa-icon icon="info" fixedWidth=true}}
+    Additional Information
+  </h1>
 
- <h1 class="p-title">
-       {{fa-icon icon="info" fixedWidth=true}} Additional Information
- </h1>
-
- <div>
+  <div>
     <span class="p-key">Free Provider: </span>
     <span class="p-value">{{details.details.free_provider}}</span>
- </div>
+  </div>
 
- <div>
+  <div>
     <span class="p-key">Disposable: </span>
     <span class="p-value">{{details.details.disposable}}</span>
- </div>
+  </div>
 
- <div>
+  <div>
     <span class="p-key">Spoofable: </span>
     <span class="p-value">{{details.details.spoofable}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">SPF Strict: </span>
     <span class="p-value">{{details.details.spf_strict}}</span>
- </div>
- <div>
+  </div>
+  <div>
     <span class="p-key">DMARC Enforced: </span>
     <span class="p-value">{{details.details.dmarc_enforced}}</span>
- </div>
+  </div>
 
- {{#if details.details.profiles.length}}
+  {{#if details.details.profiles.length}}
     <h1 class="p-title">
-       {{fa-icon icon="share-alt" fixedWidth=true}} Associated Social Profiles
+      {{fa-icon icon="share-alt" fixedWidth=true}}
+      Associated Social Profiles
     </h1>
 
     {{#each details.details.profiles as |profile|}}
-       <span class="pulse-tag">{{profile}}</span>
+      <span class="pulse-tag">{{profile}}</span>
     {{/each}}
- {{/if}}
+  {{/if}}
+</div>
 
- <div class="mt-2">
-   {{#if details.dailyLookupsRemaining}}
-     <div class="p-footnote">
-       Daily Lookups Remaining: {{details.dailyLookupsRemaining}}
-     </div>
-   {{/if}}
-   {{#if details.monthlyLookupsRemaining}}
-     <div class="p-footnote">
-       Monthly Lookups Remaining: {{details.monthlyLookupsRemaining}}
-     </div>
-   {{/if}}
- </div>
+<div class="mt-2">
+  {{#if details.dailyLookupsRemaining}}
+    <div class="p-footnote">
+      Daily Lookups Remaining:
+      {{details.dailyLookupsRemaining}}
+    </div>
+  {{/if}}
+  {{#if details.monthlyLookupsRemaining}}
+    <div class="p-footnote">
+      Monthly Lookups Remaining:
+      {{details.monthlyLookupsRemaining}}
+    </div>
+  {{/if}}
+</div>
 
- <div class="mt-2 powered-by">
-   <a href="https://sublimesecurity.com/">EmailRep by Sublime Security {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
- </div>
-
-
-
+<div class="mt-2 powered-by">
+  <a href="https://sublimesecurity.com/">EmailRep by Sublime Security
+    {{fa-icon icon="external-link-square" class="external-link-icon"}}</a>
+</div>
