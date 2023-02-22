@@ -1,45 +1,45 @@
-"use strict";
+'use strict';
 polarity.export = PolarityComponent.extend({
-  details: Ember.computed.alias("block.data.details"),
-  uniqueIdPrefix: "",
+  details: Ember.computed.alias('block.data.details'),
+  uniqueIdPrefix: '',
   init () {
     let array = new Uint32Array(5);
-    this.set("uniqueIdPrefix", window.crypto.getRandomValues(array).join(""));
+    this.set('uniqueIdPrefix', window.crypto.getRandomValues(array).join(''));
 
     this._super(...arguments);
   },
   actions: {
     copyData: function () {
       Ember.run.scheduleOnce(
-        "afterRender",
+        'afterRender',
         this,
         this.copyElementToClipboard,
-        `email-container-${this.get("uniqueIdPrefix")}`
+        `email-container-${this.get('uniqueIdPrefix')}`
       );
 
-      Ember.run.scheduleOnce("destroy", this, this.restoreCopyState);
+      Ember.run.scheduleOnce('destroy', this, this.restoreCopyState);
     }
   },
   copyElementToClipboard (element) {
     window.getSelection().removeAllRanges();
     let range = document.createRange();
 
-    range.selectNode(typeof element === "string" ? document.getElementById(element) : element);
+    range.selectNode(typeof element === 'string' ? document.getElementById(element) : element);
     window.getSelection().addRange(range);
-    document.execCommand("copy");
+    document.execCommand('copy');
     window.getSelection().removeAllRanges();
   },
   getElementRange (element) {
     let range = document.createRange();
-    range.selectNode(typeof element === "string" ? document.getElementById(element) : element);
+    range.selectNode(typeof element === 'string' ? document.getElementById(element) : element);
     return range;
   },
   restoreCopyState () {
-    this.set("showCopyMessage", true);
+    this.set('showCopyMessage', true);
 
     setTimeout(() => {
       if (!this.isDestroyed) {
-        this.set("showCopyMessage", false);
+        this.set('showCopyMessage', false);
       }
     }, 2000);
   }
