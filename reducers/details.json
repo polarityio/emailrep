@@ -1,0 +1,36 @@
+{
+  "root": {
+    "path": "",
+    "on_null": "return_empty"
+  },
+  "pipeline": [
+    {
+      "op": "copy",
+      "from": "summary",
+      "to": "reduced_results.summary"
+    },
+    {
+      "op": "copy",
+      "from": "reputation",
+      "to": "reduced_results.reputation"
+    },
+    {
+      "op": "copy",
+      "from": "details.malicious_activity",
+      "to": "reduced_results.malicious_activity"
+    },
+    {
+      "op": "copy",
+      "from": "details.data_breach",
+      "to": "reduced_results.data_breach"
+    },
+    {
+      "op": "prune",
+      "strategy": "empty_values",
+      "target": "reduced_results"
+    }
+  ],
+  "output": {
+    "result": "$working.reduced_results"
+  }
+}
